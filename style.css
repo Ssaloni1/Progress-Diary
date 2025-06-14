@@ -5,12 +5,19 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'Fira Code', monospace;
   background-color: #0f0f0f;
   color: #f8f8f8;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px; /* Leave space for fixed footer */
 }
 
 header {
@@ -50,8 +57,8 @@ header h1 {
 .section {
   padding: 1rem 1.5rem;
   display: none;
-  max-height: 100vh;
   overflow-y: auto;
+  flex: 1;
 }
 
 .section.active {
@@ -141,8 +148,12 @@ body.anime-mode .entry {
   border-left: 5px solid #ffb6c1;
   background: rgba(255, 255, 255, 0.05);
   color: #fffaf0;
-  font-size: 0.95rem;
-  line-height: 1.4;
+}
+
+body.anime-mode input::placeholder,
+body.anime-mode textarea::placeholder {
+  color: #ffe4f0;
+  text-shadow: 0 0 3px rgba(255, 192, 203, 0.7);
 }
 
 /* Coding Mode */
@@ -152,25 +163,24 @@ body.coding-mode {
   color: #f8f8f8;
 }
 
-/* Anime Mode Placeholder Styling */
-body.anime-mode input::placeholder,
-body.anime-mode textarea::placeholder {
-  color: #ffe4f0;
-  text-shadow: 0 0 3px rgba(255, 192, 203, 0.7);
-}
-
+/* Footer (Fixed and Transparent) */
 footer {
-  background-color: #111;
-  color: #888;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  margin-top: 2rem;
-  border-top: 1px solid #333;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #aaa;
+  z-index: 10;
 }
 
 body.anime-mode footer {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #ffc0cb;
-  border-top: 1px solid #ffb6c1;
+  background-color: transparent;
+  color: #ffd5ec;
+  border-top: none;
+  backdrop-filter: none;
+  text-shadow: 0 0 3px #ffb6c1;
 }
