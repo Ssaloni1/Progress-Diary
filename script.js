@@ -87,3 +87,4 @@ function loadAnimeLogs() {
 
 // Load default logs on start
 loadDevLogs();
+
